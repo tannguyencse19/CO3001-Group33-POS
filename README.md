@@ -1,3 +1,3 @@
-Welcome to CO3001 - Software Engineering - HCMUT
+# Welcome to CO3001 - Software Engineering - HCMUT
 
 # Introduction
