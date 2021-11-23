@@ -79,12 +79,13 @@ def get_cus_info(request, id):
         global cus, place
         try:
             cus = Customer.objects.get(phone=cus_phone)
-            cus = model_to_dict(cus)['id']
         except:
             cus = Customer.objects.create(
                 name=cus_name, phone=cus_phone, email=cus_email)
         place = id
         Pos.take_place(id)
+        cus = model_to_dict(cus)['id']
+        print(cus)
         return redirect("product:create-order", id=Order.objects.count()+1)
     return render(request, "t/Input Customer.html", {})
 
@@ -107,8 +108,8 @@ def check_order(request, id):
     a = json.loads(request.body)
     global cus, place
     try:
+        print(cus, place)
         x = Pos.order(cus, place, '', a)
-        print(x)
         return JsonResponse(True, safe=False) if x == True else JsonResponse(x, safe=False)
     except:
         return JsonResponse(False, safe=False)
@@ -180,12 +181,13 @@ def login(request):
 def login_fetch(request):
     import json
     a = json.loads(request.body)
-    userss = authenticate(username = a['user'], password = a['password'])
+    userss = authenticate(username=a['user'], password=a['password'])
     if userss is not None:
         django.contrib.auth.login(request, userss)
         return JsonResponse(True, safe=False)
     else:
         return JsonResponse(False, safe=False)
+
 
 def logout(request):
     django.contrib.auth.logout(request)

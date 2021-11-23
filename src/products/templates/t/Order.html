@@ -44,7 +44,7 @@
             <center>{{ item.id_cus.name }}</center>
           </td>
           <td>
-            <center>{{ item.totalprice }}</center>
+            <center>${{ item.totalprice }}</center>
           </td>
           <td>
             <center>{{ item.starttime }}</center>
@@ -111,10 +111,10 @@
                 <tr>
                   <td width="20%"> <img src="{{item.id_food.image.url}}" width="90"> </td>
                   <td width="60%"> <span class="font-weight-bold">{{item.id_food.name}}</span>
-                    <div class="product-qty"> <span class="d-block">Quantity:{{item.quantity}}</span>
-                      <span>Size: {% if item.size == 1 %}Nhỏ
-                        {% elif item.size == 2 %}Vừa
-                        {% else %}Lớn
+                    <div class="product-qty"> <span class="d-block">Quantity: {{item.quantity}}</span>
+                      <span>Size: {% if item.size == 1 %}Small
+                        {% elif item.size == 2 %}Normal
+                        {% else %}Big
                         {% endif %}
                       </span>
                     </div>

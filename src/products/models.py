@@ -25,7 +25,7 @@ class Pos:
                 return Food.objects.get(id=food['id']).name
         OrderDB.create_order(id_cus=id_cus, id_place=id_place,
                              note=note)
-        order = Order.objects.get(id=Order.objects.count()+105)
+        order = Order.objects.all().last()
         for food in list_food:
             food_id = Food.objects.get(id=food['id'])
             Food_Order.objects.create(
